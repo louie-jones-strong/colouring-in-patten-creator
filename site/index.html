@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Dot Pattern Creator</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		@media print {
+			body {
+				padding: 0
+			}
+
+			.controls {
+				display: none
+			}
+
+			canvas {
+				border: none;
+				width: 100%
+			}
+		}
+
+		#holder {
+			--radius: 1em;
+			--spacing: 0.5em;
+			--scale: 1;
+			--color: #000;
+			overflow: auto;
+			max-width: 100vw;
+			max-height: 100vh;
+		}
+
+		.row {
+			display: flex;
+			width: max-content;
+			height: max-content;
+		}
+		.item {
+			--itemSize: calc(var(--radius) * var(--scale));
+			margin: calc(var(--spacing) - var(--itemSize) / 2);
+
+			height: var(--itemSize);
+			width: var(--itemSize);
+			border-radius: 100%;
+
+			border: var(--color) solid 1px;
+			background: transparent;
+		}
+
+		.item.filled {
+			background: var(--color);
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<section class="controls">
+			<label>Upload image <input id="file" type="file" accept="image/*"></label>
+			<label>Spacing: <input id="spacing" type="range" min="6" max="60" value="20"></label>
+			<label>Dot size: <input id="dotSize" type="range" min="0.1" max="1" value="0.25"></label>
+			<label>Scale: <input id="resize-scale" type="range" min="0.1" max="1" value="0.25"></label>
+		</section>
+
+		<div id="holder">
+			<div class="row">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+			<div class="row">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+			<div class="row">
+				<div class="item filled" style="--scale:0.5;"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+			<div class="row">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+		</div>
+
+	</main>
+
+	<script src="script.js"></script>
+</body>
+
+</html>
